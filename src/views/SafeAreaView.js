@@ -179,8 +179,8 @@ class SafeView extends Component {
       ...viewStyle,
       paddingTop: touchesTop ? this._getInset('top') : 0,
       paddingBottom: touchesBottom ? this._getInset('bottom') : 0,
-      paddingLeft: touchesLeft ? this._getInset('left') : 0,
-      paddingRight: touchesRight ? this._getInset('right') : 0,
+      paddingLeft: this._getInset('left'),
+      paddingRight: this._getInset('right'),
     };
 
     if (forceInset) {

@@ -21,9 +21,9 @@ import withOrientation from '../withOrientation';
 
 import type {
   NavigationScene,
-  NavigationStyleInterpolator,
-  LayoutEvent,
-  HeaderProps,
+    NavigationStyleInterpolator,
+    LayoutEvent,
+    HeaderProps,
 } from '../../TypeDefinition';
 
 type SceneProps = {
@@ -33,7 +33,7 @@ type SceneProps = {
   style?: ViewPropTypes.style,
 };
 
-type SubViewRenderer<T> = (props: SceneProps) => ?React.Node;
+type SubViewRenderer<T> = (props: SceneProps) =>?React.Node;
 
 type SubViewName = 'left' | 'title' | 'right';
 
@@ -114,13 +114,13 @@ class Header extends React.PureComponent<Props, State> {
     const onLayoutIOS =
       Platform.OS === 'ios'
         ? (e: LayoutEvent) => {
-            this.setState({
-              widths: {
-                ...this.state.widths,
-                [props.scene.key]: e.nativeEvent.layout.width,
-              },
-            });
-          }
+          this.setState({
+            widths: {
+              ...this.state.widths,
+              [props.scene.key]: e.nativeEvent.layout.width,
+            },
+          });
+        }
         : undefined;
 
     return (
@@ -284,11 +284,11 @@ class Header extends React.PureComponent<Props, State> {
     if (this.props.mode === 'float') {
       const scenesProps: Array<
         SceneProps
-      > = this.props.scenes.map((scene: NavigationScene) => ({
-        position: this.props.position,
-        progress: this.props.progress,
-        scene,
-      }));
+        > = this.props.scenes.map((scene: NavigationScene) => ({
+          position: this.props.position,
+          progress: this.props.progress,
+          scene,
+        }));
       appBar = scenesProps.map(this._renderHeader, this);
     } else {
       appBar = this._renderHeader({
@@ -311,7 +311,7 @@ class Header extends React.PureComponent<Props, State> {
 
     const { options } = this.props.getScreenDetails(scene);
     const { headerStyle } = options;
-    const appBarHeight = Platform.OS === 'ios' ? (isLandscape ? 32 : 44) : 56;
+    const appBarHeight = Platform.OS === 'ios' ? 44 : 56;
     const containerStyles = [
       styles.container,
       {

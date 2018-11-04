@@ -10,6 +10,7 @@ import {
   Animated,
 } from 'react-native';
 import withOrientation from './withOrientation';
+import { isIphoneX } from 'react-native-iphone-x-helper';
 
 // See https://mydevice.io/devices/ for device dimensions
 const X_WIDTH = 375;
@@ -22,20 +23,7 @@ const { height: D_HEIGHT, width: D_WIDTH } = Dimensions.get('window');
 const { PlatformConstants = {} } = NativeModules;
 const { minor = 0 } = PlatformConstants.reactNativeVersion || {};
 
-const isIPhoneX = (() => {
-  if (Platform.OS === 'web') return false;
-
-  if (minor >= 50) {
-    return DeviceInfo.isIPhoneX_deprecated;
-  }
-
-  return (
-    Platform.OS === 'ios' &&
-    ((D_HEIGHT === X_HEIGHT && D_WIDTH === X_WIDTH) ||
-      (D_HEIGHT === X_WIDTH && D_WIDTH === X_HEIGHT))
-  );
-})();
-
+const isIPhoneX = isIphoneX();
 const isIPad = (() => {
   if (Platform.OS !== 'ios' || isIPhoneX) return false;
 
